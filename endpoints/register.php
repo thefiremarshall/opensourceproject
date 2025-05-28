@@ -24,6 +24,15 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     <label>Password</label>
     <input type="password" name="password" required>
 
+    <label>Full Name</label>
+    <input type="text" name="full_name" required>
+
+    <label>Plan</label>
+    <select name ="plan">
+    <option value= 2 selected>-- Select a Plan --</option>
+    <option value= 1 >test</option> 
+    </select>
+
     <label>Role</label>
     <select name="role" required>
       <option value="insurance_holder">Insurance Holder</option>

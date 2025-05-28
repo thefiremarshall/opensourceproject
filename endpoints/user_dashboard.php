@@ -1,40 +1,44 @@
 <?php
+include '../includes/header2.php';
 session_start();
-if (!isset($_SESSION['user_id'])) {
-  header("Location: login.php");
-  exit;
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'patient') {
+    header("Location: login.php");
+    exit;
 }
 ?>
 
-<!DOCTYPE html>
-<html>
+<main>
 <head>
-  <title>User Dashboard</title>
-  <link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/style2.css">
 </head>
-<body>
 
-<div class="login-container">
-  <h2>User Hub</h2>
-  <p>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</p>
+  <h2>My Health Information</h2>
 
-  <?php if ($_SESSION['role'] === 'insurance_holder'): ?>
-    <ul>
-      <li><a href="view_medical_history.php">View Medical History</a></li>
-      <li><a href="view_claims.php">View Insurance Claims</a></li>
-    </ul>
-  <?php elseif ($_SESSION['role'] === 'doctor'): ?>
-    <ul>
-      <li><a href="search_patient.php">Search/Add Patient Record</a></li>
-    </ul>
-  <?php elseif ($_SESSION['role'] === 'admin'): ?>
-    <ul>
-      <li><a href="admin_dashboard.php">Go to Admin Dashboard</a></li>
-    </ul>
-  <?php endif; ?>
+  <div class="card">
+    <h3>Recent Medical Visits</h3>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Provider</th>
+        <th>Symptoms</th>
+        <th>Prognosis</th>
+        <th>Treatment</th>
+      </tr>
+      <!-- Sample Data -->
+      <tr>
+        <td>2025-04-15</td>
+        <td>Dr. John Doe</td>
+        <td>Headache</td>
+        <td>Migraine</td>
+        <td>Painkillers</td>
+      </tr>
+    </table>
+  </div>
 
-  <a href="logout.php">Logout</a>
-</div>
-
-</body>
-</html>
+  <div class="card">
+    <h3>Insurance Coverage</h3>
+    <p><strong>Plan:</strong> Premium Plus</p>
+    <p><strong>Claims Used:</strong> $1,200</p>
+    <p><strong>Remaining Coverage:</strong> $3,800</p>
+  </div>
+</main>

@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php session_start();
+  include('../includes/header2.php');
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
