@@ -1,10 +1,11 @@
 <?php
+session_start();
 require '../includes/db.php';
 
-$username = $_POST['username'];
+$username = trim($_POST['username']);
 $password = $_POST['password'];
 $role = $_POST['role'];
-$full_name =$_POST['full_name'];
+$full_name = trim($_POST['full_name']);
 $plan = $_POST['plan_id'];
 
 // Hash the password
@@ -17,14 +18,27 @@ $stmt->execute();
 $stmt->store_result();
 
 if ($stmt->num_rows > 0) {
-    echo "❌ Username already exists.";
+    $_SESSION['error'] = "Username already exists.";
+    header("Location: register.php");
+    exit;
 } else {
     // Insert new user
     $stmt = $conn->prepare("INSERT INTO users (username, password_hash, full_name, role, plan_id) VALUES (?, ?, ?, ?, ?)");
     $stmt->bind_param("sssss", $username, $password_hash, $full_name, $role, $plan);
+
     if ($stmt->execute()) {
-        echo "✅ Registration successful. <a href='login.php'>Login</a>";
+        $_SESSION['success'] = "Registration successful. You can now log in.";
+        if($_SESSION['role']=='admin'){
+            header("Location: admin_dashboard.php");
+            exit;
+        }elseif($_SESSION['role']=='doctor'){
+            header("Location: admin_dashboard.php");
+            exit;
+        }
+        
     } else {
-        echo "❌ Error: " . $stmt->error;
+        $_SESSION['error'] = "Error creating user: " . $stmt->error;
+        header("Location: register.php");
+        exit;
     }
 }

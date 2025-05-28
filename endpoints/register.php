@@ -1,9 +1,13 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+include('../includes/header2.php');
+
+if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin', 'doctor'])) {
   header("Location: login.php");
   exit;
 }
+
+$isAdmin = $_SESSION['role'] === 'admin';
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +19,18 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 <body>
 
 <div class="login-container">
-  <h2>Register</h2>
+  <h2>Register a New User</h2>
+
+  <?php
+  if (isset($_SESSION['error'])) {
+    echo "<p class='error'>" . $_SESSION['error'] . "</p>";
+    unset($_SESSION['error']);
+  }
+  if (isset($_SESSION['success'])) {
+    echo "<p class='success'>" . $_SESSION['success'] . "</p>";
+    unset($_SESSION['success']);
+  }
+  ?>
 
   <form action="register_user.php" method="POST">
     <label>Username</label>
@@ -28,17 +43,22 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     <input type="text" name="full_name" required>
 
     <label>Plan</label>
-    <select name ="plan">
-    <option value= 2 selected>-- Select a Plan --</option>
-    <option value= 1 >test</option> 
+    <select name="plan_id"  >
+      <option value= 2 selected >-- Select a Plan --</option>
+      <option value= 1 >Test</option>
     </select>
 
-    <label>Role</label>
-    <select name="role" required>
-      <option value="insurance_holder">Insurance Holder</option>
-      <option value="doctor">Doctor</option>
-      <option value="admin">Admin</option>
-    </select>
+    <?php if ($isAdmin): ?>
+      <label>Role</label>
+      <select name="role" required>
+        <option value="patient">Insurance Holder</option>
+        <option value="doctor">Doctor</option>
+        <option value="admin">Admin</option>
+      </select>
+    <?php else: ?>
+      <!-- Doctors can only add patients -->
+      <input type="hidden" name="role" value="patient">
+    <?php endif; ?>
 
     <button type="submit">Register</button>
   </form>
