@@ -14,9 +14,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $symptoms = $_POST['symptoms'];
     $diagnosis = $_POST['diagnosis'];
     $treatment = $_POST['treatment'];
+    $cost = $_POST['cost'];
 
-    $stmt = $conn->prepare("INSERT INTO visits (user_id, doctor_id, visit_date, symptoms, diagnosis, treatment_plan) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("isssss", $patient_id, $_SESSION['user_id'], $date, $symptoms, $diagnosis, $treatment);
+    $stmt = $conn->prepare("INSERT INTO visits (user_id, doctor_id, visit_date, symptoms, diagnosis, treatment_plan, vistit_cost) VALUES (?, ?, ?, ?, ?, ?,?)");
+    $stmt->bind_param("issssss", $patient_id, $_SESSION['user_id'], $date, $symptoms, $diagnosis, $treatment);
     $stmt->execute();
 
     echo "<p style='color: green;'>Visit added successfully!</p>";
@@ -43,6 +44,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <label>Treatment:</label>
     <textarea name="treatment"></textarea><br>
+
+    <label>Cost$:</label>
+    <input type="number" name="cost" required><br>
 
     <button type="submit">Submit</button>
 </form>

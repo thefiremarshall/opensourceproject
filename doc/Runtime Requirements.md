@@ -20,5 +20,5 @@ Install the following packages:
 
 
 sudo apt update
-sudo apt install apache2 php php-mysql php-mbstring php-xml mariadb-server libapache2-mod-php
+sudo apt install apache2 php php-mysql mariadb-server libapache2-mod-php
 

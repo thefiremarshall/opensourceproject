@@ -130,4 +130,23 @@
     padding: 1rem;
     color: #777;
   }
+  .alert {
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 80%;
+  }
+  
+  .alert.success {
+    background-color: #e0f7e9;
+    color: #0b6623;
+    border: 1px solid #b2d8c5;
+  }
+  
+  .alert.error {
+    background-color: #fdecea;
+    color: #b30000;
+    border: 1px solid #f5c6cb;
+  }
   

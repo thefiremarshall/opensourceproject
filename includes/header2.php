@@ -13,13 +13,14 @@ if (session_status() === PHP_SESSION_NONE) {
             <?php if (isset($_SESSION['role'])): ?>
                 <?php if ($_SESSION['role'] === 'admin'): ?>
                     <li><a href="/endpoints/admin_dashboard.php">Dashboard</a></li>
+                    <li><a href="/endpoints/register.php">Add User</a></li>
                     <li><a href="/endpoints/manage_users.php">Manage Users</a></li>
                 <?php elseif ($_SESSION['role'] === 'doctor'): ?>
                     <li><a href="/endpoints/doctor_dashboard.php">Dashboard</a></li>
-                    <li><a href="/endpoints/register.php">Register Patient</a></li>
                     <li><a href="/endpoints/add_visit.php">Add Visit</a></li>
                 <?php elseif ($_SESSION['role'] === 'patient'): ?>
                     <li><a href="/endpoints/user_dashboard.php">Dashboard</a></li>
+                    <li><a href="/endpoints/add_claim.php">Add Calim</a></li>
                     <li><a href="/endpoints/view_claims.php">My Claims</a></li>
                 <?php endif; ?>
                 <li><a href="/endpoints/logout.php">Logout</a></li>

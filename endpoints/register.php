@@ -1,13 +1,10 @@
 <?php
+include '../includes/header2.php';
 session_start();
-include('../includes/header2.php');
-
-if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin', 'doctor'])) {
-  header("Location: login.php");
-  exit;
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header("Location: login.php");
+    exit;
 }
-
-$isAdmin = $_SESSION['role'] === 'admin';
 ?>
 
 <!DOCTYPE html>
@@ -48,18 +45,13 @@ $isAdmin = $_SESSION['role'] === 'admin';
       <option value= 1 >Test</option>
     </select>
 
-    <?php if ($isAdmin): ?>
+    
       <label>Role</label>
       <select name="role" required>
         <option value="patient">Insurance Holder</option>
         <option value="doctor">Doctor</option>
         <option value="admin">Admin</option>
       </select>
-    <?php else: ?>
-      <!-- Doctors can only add patients -->
-      <input type="hidden" name="role" value="patient">
-    <?php endif; ?>
-
     <button type="submit">Register</button>
   </form>
 </div>

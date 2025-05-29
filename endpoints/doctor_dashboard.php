@@ -71,8 +71,8 @@ if (!empty($patient_id)) {
             <th>Date</th>
             <th>Symptoms</th>
             <th>Diagnosis</th>
-            <th>Medication</th>
             <th>Treatment Plan</th>
+            
           </tr>
         </thead>
         <tbody>
@@ -81,7 +81,6 @@ if (!empty($patient_id)) {
               <td><?= htmlspecialchars($visit['visit_date']) ?></td>
               <td><?= htmlspecialchars($visit['symptoms']) ?></td>
               <td><?= htmlspecialchars($visit['diagnosis']) ?></td>
-              <td><?= htmlspecialchars($visit['medication']) ?></td>
               <td><?= htmlspecialchars($visit['treatment_plan']) ?></td>
             </tr>
           <?php endforeach; ?>

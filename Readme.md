@@ -1,1 +1,9 @@
 This is  a repo for my opensource group porject
+
+Configuration
+
+the default credentials would be 
+username: admin
+password:open1234
+
+afterwards populate the database with your Insurance plans
