@@ -1,6 +1,8 @@
 This is  a repo for my opensource group porject
 
-Configuration
+view doc/installation.md
+
+Configurations
 
 the default credentials would be 
 username: admin
