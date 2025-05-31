@@ -49,9 +49,3 @@ VALUES (
   'admin'
 );
 
--- creates user to connect to let the application communicate with the db
-
-CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON health_insurance* TO 'username'@'localhost';
-FLUSH PRIVILEGES;
-EXIT;
