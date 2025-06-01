@@ -42,7 +42,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     <label>Plan</label>
     <select name="plan_id"  >
       <option value= 2 selected >-- Select a Plan --</option>
-      <option value= 1 >Test</option>
+      <option value= 1 >Standard</option>
     </select>
 
     

@@ -1,9 +1,9 @@
 CREATE TABLE Insurance_Plan (
     plan_id INT AUTO_INCREMENT PRIMARY KEY,
     plan_name VARCHAR(50) not null unique,
-    monthtly_fee decimal,
+    monthly_fee decimal,
     coverage_limit decimal,
-    refund amount decimal
+    refund_amount decimal
 );
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -23,9 +23,7 @@ create table claims (
     amount decimal not null,
     date_submitted date not null,
     status varchar(20) default 'Pending',
-    foreign key (user_id) references users (user_id),
-    
-
+    foreign key (user_id) references users (user_id)
 );
 
 create table visits(
@@ -37,7 +35,7 @@ create table visits(
     visit_date date not null,
     symptoms text not null,
     diagnosis text not null,
-    treatment_plan text not null
+    treatment_plan text not null,
     visit_cost decimal not null
 );
 -- creates admin with password as open1234
@@ -49,3 +47,18 @@ VALUES (
   'admin'
 );
 
+insert into Insurance_Plan (plan_name, monthly_fee, coverage_limit, refund_amount)
+VALUES (
+    'Standard',
+    100,
+    3000,
+    80
+);
+
+insert into Insurance_Plan (plan_name, monthly_fee, coverage_limit, refund_amount)
+VALUES (
+    'no plan',
+    0,
+    0,
+    0
+);

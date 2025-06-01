@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
-$user = "thefiremarshall";
+$user = "insurance_user";
 $pass = "open1234";
-$db = "health_insurance";
+$db = "insurance_manager";
 
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {

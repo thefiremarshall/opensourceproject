@@ -33,7 +33,7 @@ run command : sudo mariadb
 Inside the MariaDB prompt:
 
 CREATE DATABASE insurance_manager;
-CREATE USER 'insurance_user'@'localhost' IDENTIFIED BY 'securepassword';
+CREATE USER 'insurance_user'@'localhost' IDENTIFIED BY 'open1234';
 GRANT ALL PRIVILEGES ON insurance_manager.* TO 'insurance_user'@'localhost';
 FLUSH PRIVILEGES;
 EXIT;
