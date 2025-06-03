@@ -14,9 +14,11 @@ sudo apt install apache2 mariadb-server php php-mysqli libapache2-mod-php git
 
 🛠️ Clone the Project
 
-cd /var/www/html
 sudo git clone https://github.com/thefiremarshall/opensourceproject.git
-sudo chown -R www-data:www-data opensourceproject
+
+cp -r opensourceproject/. /var/www/html
+
+cd /var/www/html
 
 Optional (if needed):
 sudo rm index.html  # Remove default Apache page
