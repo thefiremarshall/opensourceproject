@@ -1,11 +1,12 @@
 <?php session_start();
   include('../includes/header2.php');
+  include('../includes/head.php');
  ?>
 <!DOCTYPE html>
 <html>
 <head>
   <title>Login</title>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/style2.css">
 </head>
 <body>
 

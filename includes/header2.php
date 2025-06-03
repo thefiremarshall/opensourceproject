@@ -4,9 +4,13 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 ?>
 
+<head>
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+
 <header>
 <title>Health Insurance Manager</title>
-  <link rel="stylesheet" href="/style.css">
     <nav class="navbar">
         <div class="logo">Health Insurance Manager</div>
         <ul class="nav-links">

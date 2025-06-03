@@ -11,7 +11,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 <html>
 <head>
   <title>Register</title>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/style2.css">
 </head>
 <body>
 
